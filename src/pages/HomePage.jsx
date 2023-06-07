@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Product from "../components/Product";
+import TableProduct from "../components/TableProduct";
 
 const HomePage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -35,12 +36,16 @@ const HomePage = () => {
         </Link>
       </div>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
+        
         {products.map((product, index) => {
           return (
             <Product key={index} product={product} getProducts={getProducts} />
           );
         })}
       </div>
+
+      <TableProduct products={products} />
+
     </div>
   );
 };
