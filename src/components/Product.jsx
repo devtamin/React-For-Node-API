@@ -25,7 +25,7 @@ const Product = ({product, getProducts}) => {
 
         <div className="mt-2 flex gap-4">
           <Link
-            to="/edit/1"
+            to={`/edit/${product._id}`}
             className="inline-block w-full text-center shadow-md text-sm bg-gray-700 text-white rounded-sm px-4 py-1 font-bold hover:bg-gray-600 hover:cursor-pointer"
           >
             Edit

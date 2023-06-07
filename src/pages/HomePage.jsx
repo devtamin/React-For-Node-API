@@ -22,10 +22,6 @@ const HomePage = () => {
     }
   }
 
-  const getAlert = () => {
-    alert('yes')
-  }
-
   useEffect(() => {
     getProducts();
   }, []);
