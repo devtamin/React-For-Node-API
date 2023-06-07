@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
