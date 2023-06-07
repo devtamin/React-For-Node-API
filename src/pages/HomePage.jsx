@@ -22,6 +22,10 @@ const HomePage = () => {
     }
   }
 
+  const getAlert = () => {
+    alert('yes')
+  }
+
   useEffect(() => {
     getProducts();
   }, []);
@@ -40,12 +44,9 @@ const HomePage = () => {
 
          
               {products.map((product, index) => 
-                <Product key={product._id} product={product} />
+                <Product key={product._id} product={product} getProducts={getProducts} />
               )}
        
-
-          
-      
 
       </div>
     </div>

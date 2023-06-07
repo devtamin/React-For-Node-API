@@ -1,6 +1,20 @@
+import axios from "axios";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
-const Product = ({product}) => {
+const Product = ({product, getProducts}) => {
+
+  const deleteProduct = async(id) => {
+    try {
+      await axios.delete(`http://localhost:3000/products/${id}`);
+      toast.success("Delete a Product Successfully");
+      getProducts();
+    } catch (error) {
+      toast.error(error.message);
+    }
+  }
+
+
   return (
     <div  className="bg-white rounded shadow-lg overflow-hidden">
       <img src={product.image} className="w-full h-28 object-cover" />
@@ -16,12 +30,12 @@ const Product = ({product}) => {
           >
             Edit
           </Link>
-          <Link
-            to="/create"
+          <button
+            onClick={() => deleteProduct(product._id)}
             className="inline-block w-full text-center shadow-md text-sm bg-red-700 text-white rounded-sm px-4 py-1 font-bold hover:bg-red-600 hover:cursor-pointer"
           >
             Delete
-          </Link>
+          </button>
         </div>
       </div>
     </div>
