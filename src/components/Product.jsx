@@ -2,22 +2,29 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
-const Product = ({product, getProducts}) => {
+const Product = ({ product, getProducts }) => {
+  const deleteProduct = async (id) => {
+    const result = await Swal.fire({
+      title: "Do you want to delete the product?",
+      showCancelButton: true,
+      confirmButtonText: "Delete",
+    });
 
-  const deleteProduct = async(id) => {
-    try {
-      await axios.delete(`http://localhost:3000/products/${id}`);
-      toast.success("Delete a Product Successfully");
-      getProducts();
-    } catch (error) {
-      toast.error(error.message);
+    if (result.isConfirmed) {
+      try {
+        await axios.delete(`http://localhost:3000/products/${id}`);
+        toast.success("Delete a Product Successfully");
+        getProducts();
+      } catch (error) {
+        toast.error(error.message);
+      }
     }
-  }
-
+  };
 
   return (
-    <div  className="bg-white rounded shadow-lg overflow-hidden">
+    <div className="bg-white rounded shadow-lg overflow-hidden">
       <img src={product.image} className="w-full h-28 object-cover" />
       <div className="px-4 pt-2 pb-4">
         <h2 className="text font-semibold">{product.name}</h2>

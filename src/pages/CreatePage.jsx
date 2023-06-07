@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
+
 const CreatePage = () => {
 
     const [name, setName] = useState("");
@@ -14,6 +15,10 @@ const CreatePage = () => {
 
     const saveProduct = async(e) => {
         e.preventDefault();
+        if(name === "" || quantity === "" || price === "" || image == ""){
+            toast.error('Please fill out all input completely');
+            return;
+        }
         try {
             setIsLoading(true);
             const response = await axios.post("http://localhost:3000/products", {name: name, quantiy: quantity, price: price, image: image});

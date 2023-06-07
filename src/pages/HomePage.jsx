@@ -36,16 +36,32 @@ const HomePage = () => {
         </Link>
       </div>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
-        
-        {products.map((product, index) => {
-          return (
-            <Product key={index} product={product} getProducts={getProducts} />
-          );
-        })}
+        {isLoading ? (
+          "Loading"
+        ) : (
+          <>
+            {products.length > 0 ? (
+              <>
+                {products.map((product, index) => {
+                  return (
+                    <Product
+                      key={index}
+                      product={product}
+                      getProducts={getProducts}
+                    />
+                  );
+                })}
+              </>
+            ) : (
+              <div className="mt-4 bg-gray-800 text-white font-serif p-4">
+                There is no product
+              </div>
+            )}
+          </>
+        )}
       </div>
 
       <TableProduct products={products} />
-
     </div>
   );
 };
