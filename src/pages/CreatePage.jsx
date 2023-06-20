@@ -21,7 +21,7 @@ const CreatePage = () => {
         }
         try {
             setIsLoading(true);
-            const response = await axios.post("https://node-api-v2-t55c.onrender.com/api/products", {name: name, quantiy: quantity, price: price, image: image});
+            const response = await axios.post("http://localhost:3000/api/products", {name: name, quantiy: quantity, price: price, image: image});
             toast.success(`Save ${response.data.name} Successfully`);
             setIsLoading(false);
             navigate("/");
