@@ -12,7 +12,8 @@ const HomePage = () => {
   const getProducts = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get("http://localhost:3000/products");
+      const response = await axios.get("http://localhost:3000/api/products/");
+      console.log(response.data)
       setProducts(response.data);
       setIsLoading(false);
     } catch (error) {
