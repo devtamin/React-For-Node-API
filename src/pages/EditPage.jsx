@@ -18,7 +18,7 @@ const EditPage = () => {
   const getProduct = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get(`http://localhost:3000/api/products/${id}`);
+      const response = await axios.get(`https://node-api-v2-t55c.onrender.com/api/products/${id}`);
       setProduct({
         name: response.data.name,
         quantity: response.data.quantity,
@@ -35,7 +35,7 @@ const EditPage = () => {
   const updateProduct = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/api/products/${id}`, product);
+      await axios.put(`https://node-api-v2-t55c.onrender.com/api/products/${id}`, product);
       toast.success("Updated a product successfully");
       navigate("/");
     } catch (error) {
